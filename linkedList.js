@@ -72,67 +72,64 @@ class LinkedList {
     this.size++;
   }
 
-  isPalindrome() {
-    let curr = this.head;
-    let curr2 = this.head;
-    let isPalin = true;
-    const stack = [];
-    while (curr) {
-      stack.push(curr.data);
-      curr = curr.next;
-    }
-    while (curr2) {
-      if(curr2.data != stack.pop()){
-        isPalin = false;
-        break;
-      }
-      curr2 = curr2.next;
-    }
-    console.log(isPalin);
-  }
-
   printList() {
-    console.log("Employee List: ")
+    console.log("Employee List: ");
     let curr = this.head;
     while (curr) {
       console.log(curr.data);
       curr = curr.next;
     }
   }
+  bulkInsert(arr){
+      let curr = this.head;
+      while(curr.next != null){
+        curr = curr.next;
+      }
+      for(let i = 0; i< arr.length; i++){
+        curr.next = new Node(arr[i], this.curr);
+        curr = curr.next;
+      }
+  }
 }
 
-// const l1 = new LinkedList();
-// let employee1 = {
-//   name: "Ahmed",
-//   age: 20,
-// };
-// let employee2 = {
-//   name: "Dina",
-//   age: 25,
-// };
-// let employee3 = {
-//   name: "Jamal",
-//   age: 65,
-// };
+const l1 = new LinkedList();
+let employee1 = {
+  id: 1,
+  name: "Ahmed"
+};
+let employee2 = {
+  id: 2,
+  name: "Dina",
+};
+let employee3 = {
+  id: 3,
+  name: "Jamal"
+};
+let arr = [
+  {
+    "id": "4",
+    "name": "DR. Strange",
+  },
+  {
+    "id": "5",
+    "name": "Pikachu",
+  },
+  {
+    "id": "6",
+    "name": "Squirtle",
+  }
+];
+l1.insertLast(employee1);
+l1.insertLast(employee2);
+l1.insertLast(employee3);
 
-// l1.insertLast(employee1);
-// l1.insertLast(employee2);
-// l1.insertLast(employee3);
+l1.reverseList();
+l1.printList();
 
-// l1.reverseList();
-// l1.printList();
+l1.findEmployee(3);
 
-// l1.findEmployee(3);
+ l1.deleteEmployee(2);
 
-//  l1.deleteEmployee(2);
+ l1.bulkInsert(arr);
+ l1.printList();
 
-//  l1.printList();
-
-
-let a = new LinkedList();
-a.insertLast(1);
-a.insertLast(2);
-
-// a.reverseList();
-// a.printList();
-a.isPalindrome();
